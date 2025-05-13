@@ -4,6 +4,11 @@ As part of Wave 0, please fill out notes for each of the below files. They are i
 PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 ## App.java
+- This is where we will compile our overall tree output
+- It will contain a path, and may contain flags in the argument
+    - Flag for colored text
+    - Flag for hidden files
+- We'll create a truffulaOptions object that is passed to the truffulaPrinter
 
 ## ConsoleColor.java
 
