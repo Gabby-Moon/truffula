@@ -11,6 +11,8 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - We'll create a truffulaOptions object that is passed to the truffulaPrinter
 
 ## ConsoleColor.java
+- Stores codes for colors that can be printed on the console
+- Can give the code of a certain color
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
