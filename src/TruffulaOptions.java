@@ -100,11 +100,28 @@ public class TruffulaOptions  {
    * @throws IllegalArgumentException if unknown arguments are provided or the path is missing
    * @throws FileNotFoundException if the directory cannot be found or if the path points to a file
    */
-  public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException {
-    // TODO: Replace the below lines with your implementation
-    root = null;
-    showHidden = false;
-    useColor = false;
+  public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException 
+  {
+    // Set up variables to check input
+    String path = "";
+    boolean hidden = false;
+    boolean color = true;
+
+    // Go through each input and set the flag variables
+    for (String option : args)
+    {
+      if (option == "-nc") color = false;
+      else if (option == "-h") hidden = true;
+      else path = option;
+    }
+
+    // Verify the input directory exists, then set the flags from the variables
+    File directory = new File(path);
+    if (directory.exists()) this.root = directory;
+    else throw new FileNotFoundException();
+    this.useColor = color;
+    this.showHidden = hidden;
+
   }
 
   /**
