@@ -39,3 +39,5 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
     - Testing setup will be extensive for TruffulaPrinter, as each file and folder needs to individually be set up, along with the color coding for each.
 
 ## AlphabeticalFileSorter.java
+- Passed in an array of the type File and it compares the name (ignoring the case) and sorts them
+- It returns the sorted files array
