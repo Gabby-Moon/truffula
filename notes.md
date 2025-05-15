@@ -27,6 +27,15 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
     - The command-line constructor can throw two exceptions for missing path and incorrect directory
 - The test makes a directory and gets the path from it
 - And it also tests wether the hidden files and no color are being followed
+
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
+- Compiles our ColorPrinter and TruffulaOptions files into the TruffulaPrinter.
+    - This gives access to both color settings and file settings
+- Everything is combined to output a tree of file data
+    - Case-insensitive, but sorted lexicographically
+    - Hidden files shown or not shown
+    - Specific color settings, including default options
+- Testing will check if windows or hidden, and test the compiled output structure of files & colors.
+    - Testing setup will be extensive for TruffulaPrinter, as each file and folder needs to individually be set up, along with the color coding for each.
 
 ## AlphabeticalFileSorter.java
