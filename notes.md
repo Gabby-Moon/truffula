@@ -15,6 +15,9 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - Can give the code of a certain color
 
 ## ColorPrinter.java / ColorPrinterTest.java
+- Sets up the color output within the terminal
+- Takes the ConsoleColor enum of colors, and applies them to a specific String either permanently or temporarily.
+-  Tests will verify the effectiveness of the methods by verifying color output.
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
