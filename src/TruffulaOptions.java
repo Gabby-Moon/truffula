@@ -102,18 +102,28 @@ public class TruffulaOptions  {
    */
   public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException 
   {
+    if (args == null) throw new IllegalArgumentException();
+    
     // Set up variables to check input
     String path = "";
     boolean hidden = false;
     boolean color = true;
+
+    if (args[args.length -1] != "-nc" || args[args.length - 1] != "-h")
+    {
+      path = args[args.length - 1];
+    }
+
+    if (path == "") throw new IllegalArgumentException();
 
     // Go through each input and set the flag variables
     for (String option : args)
     {
       if (option == "-nc") color = false;
       else if (option == "-h") hidden = true;
-      else path = option;
     }
+
+    
 
     // Verify the input directory exists, then set the flags from the variables
     File directory = new File(path);
