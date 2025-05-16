@@ -42,8 +42,14 @@ public class App {
    */
   public static void main(String[] args) throws Exception 
   {
-    TruffulaOptions options = new TruffulaOptions(args);
-    TruffulaPrinter setup = new TruffulaPrinter(options);
-    setup.printTree();
+    try {
+      TruffulaOptions options = new TruffulaOptions(args);
+      TruffulaPrinter setup = new TruffulaPrinter(options);
+      setup.printTree();
+    } catch (Exception e) {
+      throw new Exception(e);
+    }
+
   }
+  
 }
