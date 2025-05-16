@@ -168,7 +168,7 @@ public class TruffulaPrinterTest {
 
         // Create Subdirectory
         File documents = new File(myFolder, "Documents");
-        assertTrue(documents.mkdir(), "Documents directory should be created");;
+        assertTrue(documents.mkdir(), "Documents directory should be created");
 
         // Files
         File readme = new File(documents, "README.md");
@@ -204,20 +204,21 @@ public class TruffulaPrinterTest {
         String nl = System.lineSeparator();
 
         // Build Color
+        ConsoleColor reset = ConsoleColor.RESET;
         ConsoleColor white = ConsoleColor.WHITE;
 
         // Set up build
         StringBuilder expected = new StringBuilder();
-        expected.append(white).append("myFolder/").append(nl);
-        expected.append(white).append("   Bulbasuar.txt").append(nl);
-        expected.append(white).append("   charmander.txt").append(nl);
-        expected.append(white).append("   Documents/").append(nl);
-        expected.append(white).append("      images/").append(nl);
-        expected.append(white).append("         cat.png").append(nl);
-        expected.append(white).append("         Dog.png").append(nl);
-        expected.append(white).append("      notes.txt").append(nl);
-        expected.append(white).append("      README.md").append(nl);
-        expected.append(white).append("   squirtle.txt").append(nl);
+        expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   Bulbasuar.txt").append(nl).append(reset);
+        expected.append(white).append("   charmander.txt").append(nl).append(reset);
+        expected.append(white).append("   Documents/").append(nl).append(reset);
+        expected.append(white).append("      images/").append(nl).append(reset);
+        expected.append(white).append("         cat.png").append(nl).append(reset);
+        expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("      notes.txt").append(nl).append(reset);
+        expected.append(white).append("      README.md").append(nl).append(reset);
+        expected.append(white).append("   squirtle.txt").append(nl).append(reset);
 
         // Assert
         assertEquals(expected.toString(), output);
