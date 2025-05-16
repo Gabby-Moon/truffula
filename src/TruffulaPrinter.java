@@ -117,22 +117,25 @@ public class TruffulaPrinter {
     // out.println("My options are: " + options);
 
     File root = options.getRoot();
-    out.println(root.getName());
+    out.println(root.getName() + "/");
 
     File[] subfolders = root.listFiles();
-    printTreeHelper(subfolders);
+    printTreeHelper(subfolders, "   ");
   }
 
-  public void printTreeHelper(File[] folders) {
+  public void printTreeHelper(File[] folders, String space) {
     if(folders == null || folders.length == 0) {
       return;
     }
     for(File folder : folders) {
       if(folder.isDirectory()) {
-        printTreeHelper(folder.listFiles());
+        out.println(space + folder.getName() + "/");
+        space += "   ";
+        printTreeHelper(folder.listFiles(), space);
+        space = space.substring(0, space.length() - 3);
       }
       else {
-        out.println("   " + folder.getName());
+        out.println(space + folder.getName());
       }
     }
   }
