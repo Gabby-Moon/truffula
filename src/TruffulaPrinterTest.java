@@ -203,18 +203,21 @@ public class TruffulaPrinterTest {
         String output = baos.toString();
         String nl = System.lineSeparator();
 
+        // Build Color
+        ConsoleColor white = ConsoleColor.WHITE;
+
         // Set up build
         StringBuilder expected = new StringBuilder();
-        expected.append("myFolder/").append(nl);
-        expected.append("   Bulbasuar.txt").append(nl);
-        expected.append("   charmander.txt").append(nl);
-        expected.append("   Documents/").append(nl);
-        expected.append("      images/").append(nl);
-        expected.append("         cat.png").append(nl);
-        expected.append("         Dog.png").append(nl);
-        expected.append("      notes.txt").append(nl);
-        expected.append("      README.md").append(nl);
-        expected.append("   squirtle.txt").append(nl);
+        expected.append(white).append("myFolder/").append(nl);
+        expected.append(white).append("   Bulbasuar.txt").append(nl);
+        expected.append(white).append("   charmander.txt").append(nl);
+        expected.append(white).append("   Documents/").append(nl);
+        expected.append(white).append("      images/").append(nl);
+        expected.append(white).append("         cat.png").append(nl);
+        expected.append(white).append("         Dog.png").append(nl);
+        expected.append(white).append("      notes.txt").append(nl);
+        expected.append(white).append("      README.md").append(nl);
+        expected.append(white).append("   squirtle.txt").append(nl);
 
         // Assert
         assertEquals(expected.toString(), output);
