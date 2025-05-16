@@ -109,12 +109,12 @@ public class TruffulaOptions  {
     boolean hidden = false;
     boolean color = true;
 
+    // Setting up path or throwing an exception
     if (args[args.length -1] != "-nc" || args[args.length - 1] != "-h")
     {
       path = args[args.length - 1];
     }
-
-    if (path == "") throw new IllegalArgumentException();
+    else throw new IllegalArgumentException();    
 
     // Go through each input and set the flag variables
     for (String option : args)
@@ -122,8 +122,6 @@ public class TruffulaOptions  {
       if (option == "-nc") color = false;
       else if (option == "-h") hidden = true;
     }
-
-    
 
     // Verify the input directory exists, then set the flags from the variables
     File directory = new File(path);
