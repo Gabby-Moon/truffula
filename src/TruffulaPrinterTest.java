@@ -61,6 +61,7 @@ public class TruffulaPrinterTest {
         return hidden;
     }
 
+// ORIGINAL TEST
     @Test
     public void testPrintTree_ExactOutput_WithCustomPrintStream(@TempDir File tempDir) throws IOException {
         // Build the example directory structure:
@@ -151,6 +152,8 @@ public class TruffulaPrinterTest {
         assertEquals(expected.toString(), output);
     }
 
+    
+// NO HIDDEN, NO COLOR
     @Test
     public void testPrintTree_NoHidden_NoColor(@TempDir File tempDir) throws IOException
     {
@@ -223,4 +226,164 @@ public class TruffulaPrinterTest {
         // Assert
         assertEquals(expected.toString(), output);
     }
+
+
+// YES HIDDEN NO SHOW, NO COLOR
+    @Test
+    public void testPrintTree_YesHiddenNoShow_NoColor(@TempDir File tempDir) throws IOException
+    {
+        // Create Folder
+        File myFolder = new File(tempDir, "myFolder");
+        assertTrue(myFolder.mkdir(), "myFolder should be created");
+
+        // Create Visible Files
+        File bulbasaur = new File(myFolder, "Bulbasuar.txt");
+        File charmander = new File(myFolder, "charmander.txt");
+        File squirtle = new File(myFolder, "squirtle.txt");
+        bulbasaur.createNewFile();
+        charmander.createNewFile();
+        squirtle.createNewFile();
+
+        // Create Subdirectory
+        File documents = new File(myFolder, "Documents");
+        assertTrue(documents.mkdir(), "Documents directory should be created");
+
+        // Create a hidden file in myFolder
+        createHiddenFile(myFolder, ".hidden.txt");
+
+        // Files
+        File readme = new File(documents, "README.md");
+        File notes = new File(documents, "notes.txt");
+        readme.createNewFile();
+        notes.createNewFile();
+
+        // Subdirectory
+        File images = new File(documents, "images");
+        assertTrue(images.mkdir(), "images directory should be created");
+
+        // File in images
+        File cat = new File(images, "cat.png");
+        File dog = new File(images, "Dog.png");
+        cat.createNewFile();
+        dog.createNewFile();
+
+        // Set up TruffulaOptions
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
+
+        // Capture output
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+
+        // Instantiate TruffulaPrinter
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+
+        // Call printTree
+        printer.printTree();
+
+        // Get printed output
+        String output = baos.toString();
+        String nl = System.lineSeparator();
+
+        // Build Color
+        ConsoleColor reset = ConsoleColor.RESET;
+        ConsoleColor white = ConsoleColor.WHITE;
+
+        // Set up build
+        StringBuilder expected = new StringBuilder();
+        expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   Bulbasuar.txt").append(nl).append(reset);
+        expected.append(white).append("   charmander.txt").append(nl).append(reset);
+        expected.append(white).append("   Documents/").append(nl).append(reset);
+        expected.append(white).append("      images/").append(nl).append(reset);
+        expected.append(white).append("         cat.png").append(nl).append(reset);
+        expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("      notes.txt").append(nl).append(reset);
+        expected.append(white).append("      README.md").append(nl).append(reset);
+        expected.append(white).append("   squirtle.txt").append(nl).append(reset);
+
+        // Assert
+        assertEquals(expected.toString(), output);
+    }
+
+
+    
+// YES HIDDEN NO SHOW, NO COLOR
+    @Test
+    public void testPrintTree_YesHiddenYesShow_NoColor(@TempDir File tempDir) throws IOException
+    {
+        // Create Folder
+        File myFolder = new File(tempDir, "myFolder");
+        assertTrue(myFolder.mkdir(), "myFolder should be created");
+
+        // Create Visible Files
+        File bulbasaur = new File(myFolder, "Bulbasuar.txt");
+        File charmander = new File(myFolder, "charmander.txt");
+        File squirtle = new File(myFolder, "squirtle.txt");
+        bulbasaur.createNewFile();
+        charmander.createNewFile();
+        squirtle.createNewFile();
+
+        // Create Subdirectory
+        File documents = new File(myFolder, "Documents");
+        assertTrue(documents.mkdir(), "Documents directory should be created");
+
+        // Create a hidden file in myFolder
+        createHiddenFile(myFolder, ".hidden.txt");
+
+        // Files
+        File readme = new File(documents, "README.md");
+        File notes = new File(documents, "notes.txt");
+        readme.createNewFile();
+        notes.createNewFile();
+
+        // Subdirectory
+        File images = new File(documents, "images");
+        assertTrue(images.mkdir(), "images directory should be created");
+
+        // File in images
+        File cat = new File(images, "cat.png");
+        File dog = new File(images, "Dog.png");
+        cat.createNewFile();
+        dog.createNewFile();
+
+        // Set up TruffulaOptions
+        TruffulaOptions options = new TruffulaOptions(myFolder, true, false);
+
+        // Capture output
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+
+        // Instantiate TruffulaPrinter
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+
+        // Call printTree
+        printer.printTree();
+
+        // Get printed output
+        String output = baos.toString();
+        String nl = System.lineSeparator();
+
+        // Build Color
+        ConsoleColor reset = ConsoleColor.RESET;
+        ConsoleColor white = ConsoleColor.WHITE;
+
+        // Set up build
+        StringBuilder expected = new StringBuilder();
+        expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   Bulbasuar.txt").append(nl).append(reset);
+        expected.append(white).append("   charmander.txt").append(nl).append(reset);
+        expected.append(white).append("   Documents/").append(nl).append(reset);
+        expected.append(white).append("      images/").append(nl).append(reset);
+        expected.append(white).append("         cat.png").append(nl).append(reset);
+        expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("      notes.txt").append(nl).append(reset);
+        expected.append(white).append("      README.md").append(nl).append(reset);
+        expected.append(white).append("   .hidden.txt").append(nl).append(reset);
+        expected.append(white).append("   squirtle.txt").append(nl).append(reset);
+
+        // Assert
+        assertEquals(expected.toString(), output);
+    }
+
+
 }
