@@ -129,13 +129,17 @@ public class TruffulaPrinter {
     }
     for(File folder : folders) {
       if(folder.isDirectory()) {
-        out.println(space + folder.getName() + "/");
-        space += "   ";
-        printTreeHelper(folder.listFiles(), space);
-        space = space.substring(0, space.length() - 3);
+        if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
+          out.println(space + folder.getName() + "/");
+          space += "   ";
+          printTreeHelper(folder.listFiles(), space);
+          space = space.substring(0, space.length() - 3);
+        }
       }
       else {
-        out.println(space + folder.getName());
+        if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
+          out.println(space + folder.getName());
+        }
       }
     }
   }
