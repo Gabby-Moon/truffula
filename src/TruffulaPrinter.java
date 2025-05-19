@@ -127,28 +127,42 @@ public class TruffulaPrinter {
     if(folders == null || folders.length == 0) {
       return;
     }
+
+    if(!options.isUseColor()) {
+      colorPlace = 0;
+    }
+
     for(File folder : folders) {
       if(folder.isDirectory()) {
+
         if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
-          out.println(space + colorSequence.get(colorPlace) + folder.getName() + "/");
+          out.println(colorSequence.get(colorPlace) + space + folder.getName() + "/");
           space += "   ";
-          if(colorPlace == 2) {
-            colorPlace = 0;
-          } else {
-            colorPlace++;
+
+          if(options.isUseColor()) {
+            if(colorPlace == 2) {
+              colorPlace = 0;
+            } else {
+              colorPlace++;
+            }
           }
+          
           printTreeHelper(folder.listFiles(), space, colorPlace);
           space = space.substring(0, space.length() - 3);
-          if(colorPlace == 0) {
-            colorPlace = 2;
-          } else {
-            colorPlace--;
+
+          if(options.isUseColor()) {
+              if(colorPlace == 0) {
+              colorPlace = 2;
+            } else {
+              colorPlace--;
+            }
           }
         }
       }
       else {
+        
         if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
-          out.println(space + colorSequence.get(colorPlace) + folder.getName());
+          out.println(colorSequence.get(colorPlace) + space + folder.getName());
         }
       }
     }
