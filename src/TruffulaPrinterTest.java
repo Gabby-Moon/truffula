@@ -370,6 +370,7 @@ public class TruffulaPrinterTest {
         // Set up build
         StringBuilder expected = new StringBuilder();
         expected.append(white).append("myFolder/").append(nl).append(reset);
+        expected.append(white).append("   .hidden.txt").append(nl).append(reset);
         expected.append(white).append("   Bulbasuar.txt").append(nl).append(reset);
         expected.append(white).append("   charmander.txt").append(nl).append(reset);
         expected.append(white).append("   Documents/").append(nl).append(reset);
@@ -378,7 +379,6 @@ public class TruffulaPrinterTest {
         expected.append(white).append("         Dog.png").append(nl).append(reset);
         expected.append(white).append("      notes.txt").append(nl).append(reset);
         expected.append(white).append("      README.md").append(nl).append(reset);
-        expected.append(white).append("   .hidden.txt").append(nl).append(reset);
         expected.append(white).append("   squirtle.txt").append(nl).append(reset);
 
         // Assert
