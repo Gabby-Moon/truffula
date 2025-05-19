@@ -426,7 +426,7 @@ public class TruffulaPrinterTest {
         dog.createNewFile();
 
         // Set up TruffulaOptions
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
 
         // Capture output
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -506,7 +506,7 @@ public class TruffulaPrinterTest {
         dog.createNewFile();
 
         // Set up TruffulaOptions
-        TruffulaOptions options = new TruffulaOptions(myFolder, true, false);
+        TruffulaOptions options = new TruffulaOptions(myFolder, true, true);
 
         // Capture output
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
