@@ -137,6 +137,10 @@ public class TruffulaPrinter {
       if(folder.isDirectory()) {
 
         if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
+          out.setCurrentColor(colorSequence.get(colorPlace));
+          out.println(space + folder.getName() + "/");
+          space += "   ";
+
           if(options.isUseColor()) {
             if(colorPlace == 2) {
               colorPlace = 0;
@@ -144,10 +148,6 @@ public class TruffulaPrinter {
               colorPlace++;
             }
           }
-          
-          out.setCurrentColor(colorSequence.get(colorPlace));
-          out.println(space + folder.getName() + "/");
-          space += "   ";
           
           printTreeHelper(folder.listFiles(), space, colorPlace);
           space = space.substring(0, space.length() - 3);
