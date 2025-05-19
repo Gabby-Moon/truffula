@@ -451,15 +451,15 @@ public class TruffulaPrinterTest {
         // Set up build
         StringBuilder expected = new StringBuilder();
         expected.append(white).append("myFolder/").append(nl).append(reset);
-        expected.append(yellow).append("   Bulbasuar.txt").append(nl).append(reset);
-        expected.append(yellow).append("   charmander.txt").append(nl).append(reset);
-        expected.append(yellow).append("   Documents/").append(nl).append(reset);
-        expected.append(purple).append("      images/").append(nl).append(reset);
+        expected.append(purple).append("   Bulbasuar.txt").append(nl).append(reset);
+        expected.append(purple).append("   charmander.txt").append(nl).append(reset);
+        expected.append(purple).append("   Documents/").append(nl).append(reset);
+        expected.append(yellow).append("      images/").append(nl).append(reset);
         expected.append(white).append("         cat.png").append(nl).append(reset);
         expected.append(white).append("         Dog.png").append(nl).append(reset);
-        expected.append(purple).append("      notes.txt").append(nl).append(reset);
-        expected.append(purple).append("      README.md").append(nl).append(reset);
-        expected.append(yellow).append("   squirtle.txt").append(nl).append(reset);
+        expected.append(yellow).append("      notes.txt").append(nl).append(reset);
+        expected.append(yellow).append("      README.md").append(nl).append(reset);
+        expected.append(purple).append("   squirtle.txt").append(nl).append(reset);
 
         // Assert
         assertEquals(expected.toString(), output);
@@ -531,16 +531,16 @@ public class TruffulaPrinterTest {
         // Set up build
         StringBuilder expected = new StringBuilder();
         expected.append(white).append("myFolder/").append(nl).append(reset);
-        expected.append(yellow).append("   .hidden.txt").append(nl).append(reset);
-        expected.append(yellow).append("   Bulbasuar.txt").append(nl).append(reset);
-        expected.append(yellow).append("   charmander.txt").append(nl).append(reset);
-        expected.append(yellow).append("   Documents/").append(nl).append(reset);
-        expected.append(purple).append("      images/").append(nl).append(reset);
+        expected.append(purple).append("   .hidden.txt").append(nl).append(reset);
+        expected.append(purple).append("   Bulbasuar.txt").append(nl).append(reset);
+        expected.append(purple).append("   charmander.txt").append(nl).append(reset);
+        expected.append(purple).append("   Documents/").append(nl).append(reset);
+        expected.append(yellow).append("      images/").append(nl).append(reset);
         expected.append(white).append("         cat.png").append(nl).append(reset);
         expected.append(white).append("         Dog.png").append(nl).append(reset);
-        expected.append(purple).append("      notes.txt").append(nl).append(reset);
-        expected.append(purple).append("      README.md").append(nl).append(reset);
-        expected.append(yellow).append("   squirtle.txt").append(nl).append(reset);
+        expected.append(yellow).append("      notes.txt").append(nl).append(reset);
+        expected.append(yellow).append("      README.md").append(nl).append(reset);
+        expected.append(purple).append("   squirtle.txt").append(nl).append(reset);
 
         // Assert
         assertEquals(expected.toString(), output);
