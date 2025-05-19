@@ -120,25 +120,35 @@ public class TruffulaPrinter {
     out.println(root.getName() + "/");
 
     File[] subfolders = root.listFiles();
-    printTreeHelper(subfolders, "   ");
+    printTreeHelper(subfolders, "   ", 1);
   }
 
-  public void printTreeHelper(File[] folders, String space) {
+  public void printTreeHelper(File[] folders, String space, int colorPlace) {
     if(folders == null || folders.length == 0) {
       return;
     }
     for(File folder : folders) {
       if(folder.isDirectory()) {
         if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
-          out.println(space + folder.getName() + "/");
+          out.println(space + colorSequence.get(colorPlace) + folder.getName() + "/");
           space += "   ";
-          printTreeHelper(folder.listFiles(), space);
+          if(colorPlace == 2) {
+            colorPlace = 0;
+          } else {
+            colorPlace++;
+          }
+          printTreeHelper(folder.listFiles(), space, colorPlace);
           space = space.substring(0, space.length() - 3);
+          if(colorPlace == 0) {
+            colorPlace = 2;
+          } else {
+            colorPlace--;
+          }
         }
       }
       else {
         if((!options.isShowHidden() && !folder.getName().startsWith(".")) || options.isShowHidden()) {
-          out.println(space + folder.getName());
+          out.println(space + colorSequence.get(colorPlace) + folder.getName());
         }
       }
     }
