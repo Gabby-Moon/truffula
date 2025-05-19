@@ -121,6 +121,7 @@ public class TruffulaPrinter {
     out.println(root.getName() + "/");
 
     File[] subfolders = root.listFiles();
+    AlphabeticalFileSorter.sort(subfolders);
     printTreeHelper(subfolders, "   ", 1);
   }
 
@@ -149,7 +150,9 @@ public class TruffulaPrinter {
             }
           }
           
-          printTreeHelper(folder.listFiles(), space, colorPlace);
+          File[] moreFolders = folder.listFiles();
+          AlphabeticalFileSorter.sort(moreFolders);
+          printTreeHelper(moreFolders, space, colorPlace);
           space = space.substring(0, space.length() - 3);
 
           if(options.isUseColor()) {
