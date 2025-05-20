@@ -119,8 +119,8 @@ public class TruffulaOptions  {
     // Go through each input and set the flag variables
     for (String option : args)
     {
-      if (option == "-nc") color = false;
-      else if (option == "-h") hidden = true;
+      if (option.equals("-nc")) color = false;
+      else if (option.equals("-h")) hidden = true;
     }
 
     // Verify the input directory exists, then set the flags from the variables
