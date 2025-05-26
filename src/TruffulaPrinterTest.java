@@ -307,7 +307,7 @@ public class TruffulaPrinterTest {
 
 
     
-// YES HIDDEN NO SHOW, NO COLOR
+// YES HIDDEN YES SHOW, NO COLOR
     @Test
     public void testPrintTree_YesHiddenYesShow_NoColor(@TempDir File tempDir) throws IOException
     {
