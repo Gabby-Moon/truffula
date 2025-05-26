@@ -113,4 +113,21 @@ public class TruffulaOptionsTest {
     // Assert: Check that its passing a IllegalArgument
     assertThrows(IllegalArgumentException.class, () -> new TruffulaOptions(args));
   }
+  @Test
+  void testInvalidArgs(@TempDir File tempDir) throws FileNotFoundException {
+    // Arrange: Prepare the arguments with the temp directory
+    File directory = new File(tempDir, "subfolder");
+    directory.mkdir();
+    String directoryPath = directory.getAbsolutePath();
+    String[] args = {"-hi", "", directoryPath};
+
+    // Act: Create TruffulaOptions instance
+    TruffulaOptions options = new TruffulaOptions(args);
+
+    // Assert: Check that the root directory is set correctly
+    assertEquals(directory.getAbsolutePath(), options.getRoot().getAbsolutePath());
+    assertFalse(options.isShowHidden());
+    assertTrue(options.isUseColor());
+  }
+
 }
